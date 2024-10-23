@@ -201,6 +201,16 @@ export const handler = async (
     login: loginOptions,
     resetPassword: resetPasswordOptions,
     signup: signupOptions,
+
+    cors: {
+      origin: process.env.VERCEL_URL
+        ? [
+            process.env.VERCEL_URL,
+            'https://task.christopher-marie-angelique.fr',
+          ]
+        : true,
+      credentials: true,
+    },
   })
 
   return await authHandler.invoke()
