@@ -10,7 +10,6 @@ import { AuthProvider, useAuth } from './auth'
 import './index.css'
 import './scaffold.css'
 
-
 interface AppProps {
   children?: ReactNode
 }
@@ -18,8 +17,15 @@ interface AppProps {
 const App = ({ children }: AppProps) => (
   <FatalErrorBoundary page={FatalErrorPage}>
     <RedwoodProvider titleTemplate="%PageTitle | %AppTitle">
-      <AuthProvider>
-        <RedwoodApolloProvider useAuth={useAuth}>{children}</RedwoodApolloProvider>
+      <AuthProvider type="dbAuth">
+        <RedwoodApolloProvider
+          useAuth={useAuth}
+          graphQLClientConfig={{
+            httpLinkConfig: { credentials: 'include' },
+          }}
+        >
+          {children}
+        </RedwoodApolloProvider>
       </AuthProvider>
     </RedwoodProvider>
   </FatalErrorBoundary>
