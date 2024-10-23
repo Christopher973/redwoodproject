@@ -20,6 +20,10 @@ export const handler = createGraphQLHandler({
   directives,
   sdls,
   services,
+  cors: {
+    origin: 'https://task.christopher-marie-angelique.fr', // <-- web side domain
+    credentials: true,
+  },
   onException: () => {
     // Disconnect from your database with an unhandled exception.
     db.$disconnect()

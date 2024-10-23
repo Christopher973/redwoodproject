@@ -174,6 +174,10 @@ export const handler = async (
       resetToken: 'resetToken',
       resetTokenExpiresAt: 'resetTokenExpiresAt',
     },
+    cors: {
+      origin: 'https://task.christopher-marie-angelique.fr', // <-- web side domain
+      credentials: true,
+    },
 
     // A list of fields on your user object that are safe to return to the
     // client when invoking a handler that returns a user (like forgotPassword
@@ -187,7 +191,7 @@ export const handler = async (
       attributes: {
         HttpOnly: true,
         Path: '/',
-        SameSite: 'Strict',
+        SameSite: 'None',
         Secure: process.env.NODE_ENV !== 'development',
 
         // If you need to allow other domains (besides the api side) access to
