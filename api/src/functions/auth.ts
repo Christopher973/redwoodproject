@@ -175,7 +175,7 @@ export const handler = async (
       resetTokenExpiresAt: 'resetTokenExpiresAt',
     },
     cors: {
-      origin: 'https://task.christopher-marie-angelique.fr', // <-- web side domain
+      origin: 'https://christopher-marie-angelique.fr', // <-- web side domain
       credentials: true,
     },
 
@@ -194,7 +194,7 @@ export const handler = async (
         SameSite: 'None',
         Secure: process.env.NODE_ENV !== 'development',
 
-        // If you need to allow other domains (besides the api side) access to
+        // If you need to allow othe  r domains (besides the api side) access to
         // the dbAuth session cookie:
         // Domain: 'example.com',
       },
@@ -205,16 +205,6 @@ export const handler = async (
     login: loginOptions,
     resetPassword: resetPasswordOptions,
     signup: signupOptions,
-
-    cors: {
-      origin: process.env.VERCEL_URL
-        ? [
-            process.env.VERCEL_URL,
-            'https://task.christopher-marie-angelique.fr',
-          ]
-        : true,
-      credentials: true,
-    },
   })
 
   return await authHandler.invoke()
