@@ -21,7 +21,7 @@ export const handler = createGraphQLHandler({
   sdls,
   services,
   cors: {
-    origin: 'https://task.christopher-marie-angelique.fr', // <-- web side domain
+    origin: 'https://christopher-marie-angelique.fr', // <-- web side domain
     credentials: true,
   },
   onException: () => {
